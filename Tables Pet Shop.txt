@@ -1,0 +1,62 @@
+CREATE TABLE Animal (
+ id_animal integer PRIMARY KEY AUTOINCREMENT,
+ nome_animal varchar (100),
+ idade_animal integer (2),
+ porte_animal varchar(30),
+ peso_animal integer (3),
+ descricao_animal varchar (50)
+);
+
+Create TABLE Especie_animal (
+ id_especie integer PRIMARY KEY AUTOINCREMENT,
+ nome_especie varchar (50) 
+);
+
+Create table Raça_animal (
+ id_raca integer PRIMARY KEY AUTOINCREMENT,
+ nome_raca varchar (50)
+);
+
+CREATE TABLE Local_animal (
+ id_local integer PRIMARY KEY AUTOINCREMENT,
+ cidade varchar (50),
+ estado varchar (50) 
+);
+
+Create TABLE Imagens_animal (
+ id_animal_fk integer, 
+ foto_animal varbinary (200),
+ FOREIGN KEY (id_animal_fk) REFERENCES id_animal(id_animal_fk)
+);
+
+CREATE table Animal_geral (
+  id_animal_fk integer,
+  id_cliente_fk integer,
+  id_especie_fk integer,
+  id_raca_fk integer,
+  id_local_fk interger,
+  Status_animal varchar (3),
+  FOREIGN key (id_animal_fk) REFERENCES id_animal(id_animal_fk),
+  FOREIGN key (id_especie_fk) REFERENCES id_especie(id_especie_fk),
+  FOREIGN KEY (id_raca_fk) REFERENCES id_raca(id_raca_fk),
+  FOREIGN key (id_local_fk) REFERENCES id_local(id_local_fk),
+  FOREIGN key (id_cliente_fk) REFERENCES id_cliente(id_cliente_fk)
+);
+
+Create Table Formulário_Adoção (
+ id_cliente integer PRIMARY key AUTOINCREMENT,
+ nome_cliente varchar (100),
+ email_cliente varchar (100),
+ celular_cliente varchar (11),
+ CPF_cliente integer (11)
+);
+
+Create TABLE Nascimento_cliente (
+ id_cliente_fk integer,
+ dia_nascimento integer (2),
+ mês_nascimento integer (2),
+ ano_nascimento integer (2),
+FOREIGN key (id_cliente_fk) REFERENCES id_cliente(id_cliente_fk)
+  
+);
+ 
